@@ -70,6 +70,13 @@ describe('Standalone Mode: Comment Testing', () => {
         });
     });
 
+    test('Scrape video with disabled comments', () => {
+        const parameters = {videoId: 'siiylkcrnhw', mustSetCookie: true, sortByNewest: false};
+        return ytcm.getComments(parameters).then((data) => {
+            expect(data.comments).toHaveLength(0);
+        });
+    });
+
     test('Scrape owner verified tag', () => {
         const parameters = {videoId: 'oBLQmE-nG60', mustSetCookie: true, sortByNewest: false};
         return ytcm.getComments(parameters).then((data) => {
